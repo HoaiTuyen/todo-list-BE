@@ -1,11 +1,14 @@
 const express = require('express');
 const { createUser, loginUser } = require('../controllers/userControllers');
+const {createTodo, getAllTodo} = require('../controllers/todoController');
 
 const routerAPI = express.Router();
 
 
 routerAPI.post("/register", createUser);
 routerAPI.post("/login", loginUser);
+routerAPI.post("/add_todos", createTodo);
+routerAPI.get("/todos", getAllTodo);
 routerAPI.get("/", (req, res) => {
     return res.status(200).json({ message: 'OK' });
 })
