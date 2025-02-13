@@ -49,7 +49,6 @@ const loginUserService = async (email, password) => {
             )
             return {
                 EC: 0,
-                EM: "Thành Công",
                 access_token,
                 user: {
                     name: checkEmail.name,
