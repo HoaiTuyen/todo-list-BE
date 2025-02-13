@@ -1,6 +1,6 @@
 const express = require('express');
 const { createUser, loginUser, getAccount } = require('../controllers/userControllers');
-const {createTodo, getAllTodo} = require('../controllers/todoController');
+const {createTodo, getAllTodo, deleteTodo} = require('../controllers/todoController');
 const auth = require('../middleWare/auth');
 const delay = require('../middleWare/delay');
 const routerAPI = express.Router();
@@ -11,6 +11,7 @@ routerAPI.post("/login", loginUser);
 routerAPI.post("/add_todos", createTodo);
 routerAPI.get("/todos", getAllTodo);
 routerAPI.get("/account", getAccount);
+routerAPI.delete("/deleteTodo/:id", deleteTodo);
 routerAPI.get("/", delay, (req, res) => {
     return res.status(200).json({ message: 'OK' });
 })

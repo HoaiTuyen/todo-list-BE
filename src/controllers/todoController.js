@@ -1,4 +1,4 @@
-const { handleCreateTodo, handleGetAll } = require("../services/todoService");
+const { handleCreateTodo, handleGetAll, handleDeleteTodo } = require("../services/todoService");
 
 
 const createTodo = async(req, res) => {
@@ -11,4 +11,10 @@ const getAllTodo = async(req, res) => {
     const data = await handleGetAll();
     return res.status(200).json(data);
 }
-module.exports = {createTodo, getAllTodo}
+const deleteTodo = async(req, res) => { 
+   const {id} = req.params;
+    const data = await handleDeleteTodo(id);
+    return res.status(200).json("DELETE SUCCESS")
+}
+
+module.exports = {createTodo, getAllTodo, deleteTodo}
