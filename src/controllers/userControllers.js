@@ -11,6 +11,9 @@ const loginUser = async(req, res) => {
    const data = await loginUserService(email, password);
     return res.status(200).json(data);
 }
+const getAccount = async(req, res) => {
+    return res.status(200).json(req.user)
+}   
 module.exports = {
-    createUser, loginUser
+    createUser, loginUser, getAccount
 }

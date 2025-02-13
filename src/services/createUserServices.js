@@ -69,7 +69,6 @@ const loginUserService = async (email, password) => {
     
 }
 
-
 module.exports = {
     createUserServices, loginUserService
 }

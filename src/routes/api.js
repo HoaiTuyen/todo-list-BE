@@ -1,8 +1,8 @@
 const express = require('express');
-const { createUser, loginUser } = require('../controllers/userControllers');
+const { createUser, loginUser, getAccount } = require('../controllers/userControllers');
 const {createTodo, getAllTodo} = require('../controllers/todoController');
 const auth = require('../middleWare/auth');
-
+const delay = require('../middleWare/delay');
 const routerAPI = express.Router();
 
 routerAPI.all("*", auth)
@@ -10,7 +10,8 @@ routerAPI.post("/register", createUser);
 routerAPI.post("/login", loginUser);
 routerAPI.post("/add_todos", createTodo);
 routerAPI.get("/todos", getAllTodo);
-routerAPI.get("/", (req, res) => {
+routerAPI.get("/account", getAccount);
+routerAPI.get("/", delay, (req, res) => {
     return res.status(200).json({ message: 'OK' });
 })
 
