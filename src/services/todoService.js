@@ -2,7 +2,7 @@ const Todo = require("../models/Todo")
 
 
 const handleCreateTodo = async(title) => {
-    console.log(title);
+   
     
     let result = await Todo.create({
         title: title
@@ -17,6 +17,10 @@ const handleDeleteTodo = async(id) => {
     const result = await Todo.findByIdAndDelete(id);
     return result;
 }
+const handleUpdateTodo = async(id, title) => { 
+    const todo = await Todo.findByIdAndUpdate(id, title);
+    return todo;
+}
 module.exports = {
-    handleCreateTodo, handleGetAll, handleDeleteTodo
+    handleCreateTodo, handleGetAll, handleDeleteTodo, handleUpdateTodo
 }
